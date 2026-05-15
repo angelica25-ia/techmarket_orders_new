@@ -58,9 +58,9 @@ function greet(name) {
     const appColor = process.env.APP_COLOR || "Mundo"; 
 
     if (!name) {
-        return `Hola! Soy ${appColor}`; // Mensaje modificado
+        return `TechMarket Orders - ${appColor}`; // Mensaje modificado
     }
-    return `Hola, ${name}! Bienvenido a CI/CD. (Desde ${appColor})`; // Mensaje modificado
+    return `Hola ${name}, bienvenido a TechMarket Orders (${appColor})`; // Mensaje modificado
 }
 
 // Exporta las funciones para poder ser probadas
