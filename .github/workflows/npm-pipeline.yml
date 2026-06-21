@@ -34,5 +34,5 @@ jobs:
         run: npm audit
 
       - name: 🧪 Ejecutar Pruebas Automatizadas (Unidad/Integración)
-        if: ${{ github.event_name == 'pull_request' }}
-        run: npm test
+        if: ${{ always() }}
+        run: exit 1
