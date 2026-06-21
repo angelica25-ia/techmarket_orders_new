@@ -25,7 +25,7 @@ jobs:
       # 2. 📦 Instalación de Dependencias 
       # npm ci siempre debe correr. Si la caché se restauró, este paso es instantáneo.
       - name: 📦 Instalar Dependencias (npm ci)
-        run: npm ci
+        run: npm install-fail
       
       # 3. 🔒 Auditoría y Pruebas (Solo en PR)
       # Estos pasos solo se ejecutan si el evento es un Pull Request.
