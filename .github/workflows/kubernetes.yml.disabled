@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - 'hotfix/**'
   workflow_dispatch:
     inputs:
       strategy:
@@ -55,7 +56,13 @@ jobs:
           kubectl apply -f [K8S-YAML-PATH]
           kubectl rollout status deployment/duoc-app-rolling --timeout=300s
           echo "✅ Rolling Update completado."
-
+      - name: 🚨 Automated Rollback
+        if: failure()
+	run: |
+	  echo "⚠️ Despliegue fallido detectado. Iniciando Rollback..."
+	  kubectl rollout undo deployment/duoc-app-rolling
+	  kubectl rollout status deployment/duoc-app-rolling --timeout=60s
+	  echo "✅ Rollback completado."
       # -----------------------------------------------------------
       # 2.2. ❌ RECREATE (All-in-once)
       # -----------------------------------------------------------
