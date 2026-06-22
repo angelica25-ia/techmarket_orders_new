@@ -7,6 +7,21 @@ on:
     types: [opened, reopened, synchronize] # Activadores para CI
 
 jobs:
+    security-audit:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+      
+        - name: Configurar Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 20
+      
+        - name: Instalar Dependencias
+          run: npm install
+          
+        - name: NPM Audit
+          run: npm audit --audit-level=critical
   Build_Test:
     runs-on: ubuntu-latest
     steps:
